@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width"/>
+		<!-- Add to homescreen for Safari on Ios -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="play">
+		<link rel="apple-touch-icon" href="./images/logo.png">
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="application-name" content="play">
+		<meta name="theme-color" content="#2F3BA2">
+		<link rel="icon" sizes="192x192" href="./images/logo.png">
+	    <script src="js/jquery.js"></script>
+		<script src="js/index.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<title>播放页</title>
+	</head>
+	<body>
+		<audio class="audio" src="./list/小酒窝.mp3"loop></audio>
+		<div class="bplay">
+			<div class="pheader">
+				<div class="fan">
+					<img src="./images/plist.png"/>
+				</div>
+				<div class="plist">
+					&#xe61f;
+				</div>
+			</div>
+			<div class="ban">
+				<img src="images/1.png"/>
+				<div class="banR">
+					<img src="./images/xin.png"/>
+					<span class="zi">如果大家都拥有海</span>
+					<div class="pcircle">
+						<div class="pyuan"></div>
+					</div>
+				</div>
+			</div>
+			<div class="bofang">
+				<div class="starttime">0:00</div>
+				<div class="endtime">3:24</div>
+				<div class="progress">
+					<div class="procir"></div>
+				</div>
+			</div>
+			<div class="sing">
+				<div class="singname">
+					<!--小酒窝-->
+				</div>
+				<div class="zuozhe">
+					<!--林俊杰-->
+				</div>
+			</div>
+			<div class="singActive">
+				<a href=""class="singa1">&#xe600;</a>
+				<a href=""class="singa2">&#xe60e;</a>
+			</div>
+			<div class="singci">
+				<div class="geci">
+					
+				</div>
+			</div>
+			<div class="change">
+				<div class="play">
+					<img src="images/play.png"/>
+				</div>
+				<div class="prev">
+					&#xe950;
+				</div>
+				<div class="next">
+					&#xe951;
+				</div>
+			</div>
+			<ul class="glist"></ul>
+			<ul class="gcaozuo">
+				<li>收藏</li>
+				<li>删除</li>
+			</ul>
+		</div>
+		<div class="mlist">
+			<div class="headerlist">
+	          <p>歌单</p>
+	          <img class="new" src="images/新建.png" alt="" />
+		</div>
+		<ul class="zlist">
+			<li class="active"data-role="dan">单曲</li>
+			<li class="ges"data-role="ges">歌手</li>
+			<li data-role="zhuan">专辑</li>
+		</ul>
+		<div class="bianji">
+			<div class="szm">
+				<img src="images/h_03.png"/>
+				按首字母显示
+			</div>
+		    <a href=""class="bianjia">&#xe6e3;</a>
+		</div>
+		<ul class="lists"></ul>
+		</div>
+	</body>
+</html>

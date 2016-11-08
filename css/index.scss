@@ -1,0 +1,503 @@
+*{
+    padding:0;
+    margin:0;
+    list-style: none;
+    box-sizing: border-box;
+}
+$w:320px,360px,375px,412px,414px,768px;
+html{
+    font-size:100px;
+    overflow: hidden;
+}
+body{
+    font-size:15px;
+    background: #f3f3f3;
+    position: relative;
+}
+@font-face {
+  font-family: 'iconfont';
+  src: url('iconfont.eot');
+  src: url('iconfont.eot?#iefix') format('embedded-opentype'),
+  url('iconfont.woff') format('woff'),
+  url('iconfont.ttf') format('truetype'),
+  url('iconfont.svg#iconfont') format('svg');
+}
+.iconfont{
+  font-family:"iconfont" !important;
+  font-size:16px;font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+$design-size:750px;
+@each $n in $w {
+    @media screen and (min-width:#{$n}){
+        html{
+            font-size:100px * $n / $design-size ;
+        }
+    }
+    
+}
+.mlist,.bplay{
+    width:100%;
+    height:100%;
+    position: absolute;
+    left:0;
+    top:0;
+     }
+   .bplay{
+        background: #f3f3f3;
+}
+.ylogo{
+    width:100%;
+    height:6.22rem;
+    margin-top:2.44rem;
+    background: url("../images/引导图2.png") 0 0 no-repeat;
+    background-size:100%;
+    img{
+        width:4.1rem;
+        height:4.1rem;
+        margin:{
+            left:1.7rem;
+            top:2rem;
+        }
+    }
+}
+.ymusic{
+    width:100%;
+    height:1.8rem;
+    color:#e81960;
+    font-family: "苹方";
+    font-size:40px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 1.8rem;
+    letter-spacing:12px;
+    text-transform: uppercase;
+}
+.guang{
+    width:100%;
+    height:1.8rem;
+    color:#2b2b2b;
+    font-family: "苹方";
+    font-size:16px;
+    text-align: center;
+    line-height: 1.8rem;
+    letter-spacing:12px;
+}
+.pheader{
+    width:100%;
+    height:1rem;
+    position:relative;
+    background: #ee99b7;
+    .fan{
+        width:1rem;
+        height:1rem;
+        position: absolute;
+        left: 0.2rem;
+        top:0;
+        img{
+            width:100%;
+            height:100%
+        }
+    };
+    .plist{
+        width:1rem;
+        height:1rem;
+        position: absolute;
+        right: 0.2rem;
+        top:0;
+        font-family:'iconfont' ;
+        color:#fff;
+        font-size: 40px;
+        text-align: center;
+        line-height: 1rem;
+    }
+}
+.ban{
+    width:100%;
+    height:7.2rem;
+    position:relative;
+    &>img{
+        width:6rem;
+        height:100%;
+        float:left;
+    };
+    .banR{
+        width:1.5rem;
+        height:100%;
+        float:left;
+        img{
+            width:0.48rem;
+            height:0.48rem;
+            position: absolute;
+            right:0.25rem;
+            top:0.1rem;
+        };
+        .zi{
+            width:0.8rem;
+            height:1.4rem;
+            position:absolute;
+            right:0.4rem;
+            top:2rem;
+            color:#232323;
+            text-align: right;
+            font-size: 16px;
+            letter-spacing: 2px;
+        };
+        .pcircle{
+            width:0.34rem;
+            height:0.34rem;
+            position:absolute;
+            right:0.8rem;
+            top:4rem;
+            border:1px solid #232323;
+            border-radius: 50%;
+            .pyuan{
+                width:0.2rem;
+                height:0.2rem;
+                margin:0.05rem auto;
+                border-radius: 50%;
+                background: #232323;
+            }
+        }
+    }
+}
+.bofang{
+    width:100%;
+    height:1.1rem;
+    position: relative;
+    .starttime,.endtime,.progress{
+        width:1rem;
+        height:0.5rem;
+        position:absolute;        
+        top:0.4rem;
+        background: #e6185f;
+        color:#fff;
+        font-size: 12px;
+        text-align: center;
+        line-height: 0.5rem;
+        border-radius: 5px;
+    };
+    .starttime{
+        left:0.3rem;
+    }
+    .endtime{
+        right:0.3rem;
+    };
+    .progress{
+        width:4.3rem;
+        height:0.1rem;      
+        top:0.6rem;
+        left:1.5rem;
+        background: #ccc;
+        border-radius: 5px;
+        .procir{
+            width:10px;
+            height:10px;
+            border-radius: 50%;
+            background: #e6185f;
+            position: absolute;
+            left:-5px;
+            top:-3px;
+        }
+    }
+}
+.sing{
+    width:100%;
+    height:0.7rem;
+    position: relative;
+    margin-top:0.2rem;
+    .singname,.zuozhe{
+        height:0.5rem;
+        float:left;
+        margin-left: 5%;
+        color:#8b8a8a;
+        line-height: 0.5rem;
+        font-size: 14px;
+        letter-spacing: 2px;
+        overflow: hidden;
+    };
+    .singname{
+        text-align: right;
+        font-size: 16px;
+    }
+    .zuozhe{
+        line-height: 0.6rem;
+        text-align: left;
+    }
+}
+.singActive{
+    width:1.5rem;
+    height:0.6rem;
+    position:absolute;
+    right:0.4rem;
+    top:9.5rem;
+    a{
+        display:block;
+        width:0.6rem;
+        height:0.6rem;
+        position:absolute;
+        right:0;
+        bottom:0;
+        color:#d4237a;
+        text-align: center;
+        line-height: 0.6rem;
+        font-size: 22px;
+        font-family:'iconfont' ;
+        text-decoration: none;
+    };
+    .singa1{
+        left:0;
+    }
+}
+.singci{
+    width:92%;
+    height:2rem;
+    margin:0 auto;
+    border-top:2px dashed #ccc;
+    overflow: hidden;
+    position: relative;
+    .gesi{
+       width:92%;
+       height:2rem; 
+       overflow: hidden;
+       position: relative;
+       p{
+          width:100%;
+       height:0.3rem;
+       color:#707070;
+       font-size: 14px;
+       line-height: 0.3rem;
+       }
+    }
+}
+.change{
+    width:100%;
+    height:0.6rem;
+    position:relative;
+    .play{
+        width:0.7rem;
+        height:0.7rem;
+        position: absolute;
+        left:45%;
+        top:0.3rem;
+        color:#d4237a;
+        font-size: 26px;
+        font-family:'iconfont' ;
+        text-align: center;
+        line-height: 0.7rem;
+        img{
+            width:0.6rem;
+            height:0.6rem;
+        }
+    };
+    .prev{
+        width:0.7rem;
+        height:0.7rem;
+        position: absolute;
+        left:30%;
+        top:0.3rem;
+        color:#d4237a;
+        font-size: 26px;
+        text-align: center;
+        line-height: 0.6rem;
+        font-family:'iconfont' ;
+    };
+    .next{
+        width:0.7rem;
+        height:0.7rem;
+        position: absolute;
+        left:60%;
+        top:0.3rem;
+        font-size: 26px;
+        color:#d4237a;
+        text-align: center;
+        line-height: 0.6rem;
+        font-family: 'iconfont';
+    }
+}
+.glist{
+    width:100%;
+    height:auto;
+    position:absolute;
+    bottom:-16rem;
+    left:0;
+    display:none;
+    background: #fff;
+    li{
+        width:100%;
+        height:0.8rem;
+        border-top:1px solid #ccc;
+        .singname,.zuozhe{
+        height:0.5rem;
+        float:left;
+        margin-left: 5%;
+        color:#8b8a8a;
+        line-height: 0.5rem;
+        font-size: 14px;
+        letter-spacing: 2px;
+        overflow: hidden;
+        };
+        .singname{
+            text-align: right;
+            font-size: 16px;
+        }
+        .zuozhe{
+            line-height: 0.6rem;
+            text-align: left;
+        }
+    }
+    .active{
+        .singname,.zuozhe{
+            color:#e6185f;
+        }
+    }
+}
+.gcaozuo{
+    width:100%;
+    height:auto;
+    position:absolute;
+    bottom:-3.5rem;
+    left:0;
+    display:none;
+    background: #fff;
+    li{
+        width:7.1rem;
+        height:0.8rem;
+        border-top:1px solid #ccc;
+        float:left;
+        margin-left: 5%;
+        color:#8b8a8a;
+        line-height: 0.8rem;
+        font-size: 14px;
+        letter-spacing: 2px;
+    }
+}
+.headerlist{
+    width:7.5rem;
+    height:0.9rem;
+    border-top:2px solid #ccc;
+    position:relative;
+    margin:0 auto;    
+    p{
+        width:100%;
+        height:100%;
+        line-height: 0.9rem;
+        text-align: center;
+        color:#707070;
+        font-size: 22px;
+        font-weight: bold;
+         font-family: "苹方";
+    };
+    img{
+        width:0.5rem;
+        height:0.5rem;
+        position:absolute;
+        right:0.4rem;
+        top:0.2rem;
+    }
+}
+.zlist{
+    width:7.1rem;
+    height:0.6rem;
+    border:1px solid #d4237a;
+    margin:0.1rem auto;
+    border-radius: 5px;
+    li{
+        width:33.33%;
+        height:100%;
+        text-align: center;
+        line-height: 0.6rem;
+        font-size: 18px;
+        color:#8d8d8d;
+        float:left;
+         font-family: "苹方";
+    };
+    .ges{
+       border-left:1px solid #d4237a;
+       border-right:1px solid #d4237a;
+    };
+    .active{
+        color:#d4237a;
+    }
+}
+.bianji{
+    width:7.5rem;
+    height:0.75rem;
+    position:relative;
+    margin:0 auto;
+    .szm{
+        width:100%;
+        height:100%;
+        line-height: 0.9rem;
+        padding-left:0.2rem;
+        text-align: left;
+        color:#707070;
+        font-size: 14px;
+        font-family: "苹方";
+        img{
+            width:0.5rem;
+            height:0.5rem;
+            margin-top:0.2rem;
+        }
+    };
+    a{
+        width:0.6rem;
+        height:0.6rem;
+        line-height: 0.5rem;
+        text-align: left;
+        color:#d4237a;
+        font-size: 26px;
+        font-family: "iconfont";
+        position:absolute;
+        right:0.2rem;
+        top:0.1rem;
+        text-decoration: none;
+    }
+}
+.lists{
+    width:7.15rem;
+    height:auto;
+    margin:0 auto;
+    li{
+        width:7.15rem;
+        height:1rem; 
+        position:relative;
+        float:left;
+        padding-left:1rem;
+        border-top:1px solid #ccc;
+        .singname,.zuozhe{
+            width:100%;
+            height:0.55rem;
+            line-height: 0.65rem;
+            text-align: left;
+            color:#707070;
+            font-size: 16px;
+            font-family: "苹方";
+        };
+        .zuozhe{
+           height:0.45rem ;
+           color:#848484;
+           line-height: 0.35rem;
+           font-size: 14px;
+        };
+        img{
+            width:0.5rem;
+            height:0.5rem;
+            position:absolute;
+            right:0.2rem;
+            top:0.2rem;
+        };
+        .yylogo{
+            width:0.6rem;
+            height:0.6rem;
+            left:0.2rem;
+        }
+    };
+    .active{
+         .singname,.zuozhe{
+            color:#e6185f;
+        }
+    }
+}
