@@ -460,3 +460,16 @@ body {
       left: 0.2rem; }
   .lists .active .singname, .lists .active .zuozhe {
     color: #e6185f; }
+  .geci{
+  	position:absolute;
+  	left:0;
+  	top:0;
+  	width:100%;
+  	height:auto;
+  	overflow: hidden;}
+  .geci p{
+  	width:100%;
+  	height:0.68rem;
+  	color:#888;
+  	text-align: center;
+  	line-height: 0.68rem; }

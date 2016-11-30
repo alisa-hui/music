@@ -9,6 +9,7 @@ $(function(){
 	var width=progress.width();
 	var currentIndex=0;
 	var now;
+	var gct=false;
 	var music=[
 	 {
 	 	name:"小酒窝",
@@ -20,7 +21,7 @@ $(function(){
 	 	name:"黄玲鸟与蜗牛",
 	 	zuozhe:"儿童",	 	
 	 	src:"./list/黄玲鸟与蜗牛.mp3",
-	 	content:"[00:09.96]阿门阿前一棵葡萄树[00:12.45]阿嫩阿嫩绿地刚发芽[00:14.89]蜗牛背著那重重的壳呀[00:17.48]一步一步地往上爬[00:19.67]阿树阿上两只黄鹂鸟[00:22.00]阿嘻阿嘻哈哈在笑它[00:24.59]葡萄成熟还早地很哪[00:27.18]现在上来干什么[00:29.42]阿黄阿黄鹂儿不要笑[00:31.60]等我爬上它就成熟了[00:36.93]阿门阿前一棵葡萄树[00:39.17]阿嫩阿嫩绿地刚发芽[00:41.71]蜗牛背著那重重的壳[00:44.21]一步一步地往上爬[00:46.65]阿树阿上两只黄鹂鸟[00:49.09]阿嘻阿嘻哈哈在笑它[00:51.53]葡萄成熟还早地很哪[00:53.96]现在上来干什么[00:56.62]阿黄阿黄鹂儿不要笑[00:59.21]等我爬上它就成熟了[01:23.75]阿门阿前一棵葡萄树[01:25.93]阿嫩阿嫩绿地刚发芽[01:27.71]蜗牛背著那重重的壳呀[01:31.11]一步一步地往上爬[01:33.45]阿树阿上两只黄鹂鸟[01:35.33]阿嘻阿嘻哈哈在笑它[01:37.46]葡萄成熟还早地很哪[01:39.75]现在上来干什么[01:42.95]阿黄阿黄鹂儿不要笑[01:45.13]等我爬上它就成熟了"
+	 	content:"[00:12.45]阿门阿前一棵葡萄树[00:13.45]阿嫩阿嫩绿地刚发芽[00:14.89]蜗牛背著那重重的壳呀[00:17.48]一步一步地往上爬[00:19.67]阿树阿上两只黄鹂鸟[00:22.00]阿嘻阿嘻哈哈在笑它[00:24.59]葡萄成熟还早地很哪[00:27.18]现在上来干什么[00:29.42]阿黄阿黄鹂儿不要笑[00:31.60]等我爬上它就成熟了[00:36.93]阿门阿前一棵葡萄树[00:39.17]阿嫩阿嫩绿地刚发芽[00:41.71]蜗牛背著那重重的壳[00:44.21]一步一步地往上爬[00:46.65]阿树阿上两只黄鹂鸟[00:49.09]阿嘻阿嘻哈哈在笑它[00:51.53]葡萄成熟还早地很哪[00:53.96]现在上来干什么[00:56.62]阿黄阿黄鹂儿不要笑[00:59.21]等我爬上它就成熟了[01:23.75]阿门阿前一棵葡萄树[01:25.93]阿嫩阿嫩绿地刚发芽[01:27.71]蜗牛背著那重重的壳呀[01:31.11]一步一步地往上爬[01:33.45]阿树阿上两只黄鹂鸟[01:35.33]阿嘻阿嘻哈哈在笑它[01:37.46]葡萄成熟还早地很哪[01:39.75]现在上来干什么[01:42.95]阿黄阿黄鹂儿不要笑[01:45.13]等我爬上它就成熟了"
 	 },
 	 {
 	 	name:"白天不懂夜的黑",
@@ -88,30 +89,33 @@ function render(obj,obj2){
 		return (m+":"+s);
 	}
      //进度条跳转
-	procir.on("touchend",false);
+    procir.on("touchend",false);
 	progress.on("touchend",function(e){
 		left=e.originalEvent.changedTouches[0].clientX-progress.offset().left;
-		audio.currentTime=audio.duration* left/progress.width();
+		audio.currentTime=left/progress.width()*audio.duration;
+		console.log(audio.currentTime,left/progress.width()*audio.duration)
 		return false;
 	})
 	//进度条拖拽
 	procir.on("touchstart",function(e){
-			ox=e.originalEvent.changedTouches[0].clientX-procir.offset().left;
+			var ox=e.originalEvent.changedTouches[0].clientX-procir.offset().left;
 		var start=procir.width()/2-ox;
+		gct=true;
 		$(document).on("touchmove",function(e){
 			var left1=e.originalEvent.changedTouches[0].clientX-progress.offset().left+start;
 				if(left1>=progress.width()||left1<=0){
 					return;	
 				}
-			audio.currentTime=left1/progress.width()*audio.duration;
-			
+			audio.currentTime=left1/progress.width()*audio.duration;			
 		})
 		return false;
 	});
 	procir.on("touchend",function(){
+		gct=false;
 		$(document).off("touchmove");
 		return false;
 	})
+
 	//歌词
 		function geci()
 		{
@@ -137,6 +141,29 @@ function render(obj,obj2){
 			
 			$(".geci").html(html1);
 		}
+	function play2(){
+		var lyrict1="geci"+(Math.floor(audio.currentTime)+2);
+		var p1=$(".geci p")
+		for(var i=0;i<p1.length;i++){
+			if(lyrict1==p1.eq(i).attr("id")){
+				p1.css("color","#888")
+				p1.eq(i).css("color","#ee99b7");
+				$(".geci").animate({"top":-i*0.68+"rem"},1000);
+			}
+		}
+	}
+	function play3(){
+		var lyrict1="geci"+(Math.floor(audio.currentTime)+2);
+		var p1=$(".geci p")
+		for(var i=0;i<p1.length;i++){
+			if(lyrict1==p1.eq(i).attr("id")){
+				p1.css("color","#888")
+				p1.eq(i).css("color","#ee99b7");
+				$(".geci").css({"top":-i*0.68+"rem"});
+				
+			}
+		}
+	}	
 	//audio的各个事件
 	$(audio).on("loadstart",function(){
 		$(".sing .singname").html(music[currentIndex].name);
@@ -161,6 +188,12 @@ function render(obj,obj2){
 		var width=progress.width();
 		left=audio.currentTime/ audio.duration * width-r;
 		procir.css("left",left);
+		if(gct){
+			play2()
+		}
+		else{
+			play3()
+		}
 	})
 	$(audio).on("pause",function(){
 		play.html("<img src='images/play.png' />");
@@ -177,11 +210,9 @@ function render(obj,obj2){
     })
     //列表显示
     $(".plist").on("touchend",function(){
-    	if($(".glist").css("display")=="none"){
-    		$(".glist").css("display","block").animate({"bottom":"-13.4rem"},500)
+    	if($(".glist").css("display")=="none"){   		$(".glist").css("display","block").animate({"bottom":"-13.4rem"},500)
     	}
-    	else{
-    		$(".glist").animate({"bottom":"-16rem"},500).css("display","none")
+    	else{   		$(".glist").animate({"bottom":"-16rem"},500).css("display","none")
     	}
     	return false;
     })
@@ -303,7 +334,7 @@ $(".glist").on("touchend","li",function(){
 	 	name:"黄玲鸟与蜗牛",
 	 	zuozhe:"儿童",	 	
 	 	src:"./list/黄玲鸟与蜗牛.mp3",
-	 	content:"[00:09.96]阿门阿前一棵葡萄树[00:12.45]阿嫩阿嫩绿地刚发芽[00:14.89]蜗牛背著那重重的壳呀[00:17.48]一步一步地往上爬[00:19.67]阿树阿上两只黄鹂鸟[00:22.00]阿嘻阿嘻哈哈在笑它[00:24.59]葡萄成熟还早地很哪[00:27.18]现在上来干什么[00:29.42]阿黄阿黄鹂儿不要笑[00:31.60]等我爬上它就成熟了[00:36.93]阿门阿前一棵葡萄树[00:39.17]阿嫩阿嫩绿地刚发芽[00:41.71]蜗牛背著那重重的壳[00:44.21]一步一步地往上爬[00:46.65]阿树阿上两只黄鹂鸟[00:49.09]阿嘻阿嘻哈哈在笑它[00:51.53]葡萄成熟还早地很哪[00:53.96]现在上来干什么[00:56.62]阿黄阿黄鹂儿不要笑[00:59.21]等我爬上它就成熟了[01:23.75]阿门阿前一棵葡萄树[01:25.93]阿嫩阿嫩绿地刚发芽[01:27.71]蜗牛背著那重重的壳呀[01:31.11]一步一步地往上爬[01:33.45]阿树阿上两只黄鹂鸟[01:35.33]阿嘻阿嘻哈哈在笑它[01:37.46]葡萄成熟还早地很哪[01:39.75]现在上来干什么[01:42.95]阿黄阿黄鹂儿不要笑[01:45.13]等我爬上它就成熟了"
+	 	content:"[00:12.45]阿门阿前一棵葡萄树[00:13.45]阿嫩阿嫩绿地刚发芽[00:14.89]蜗牛背著那重重的壳呀[00:17.48]一步一步地往上爬[00:19.67]阿树阿上两只黄鹂鸟[00:22.00]阿嘻阿嘻哈哈在笑它[00:24.59]葡萄成熟还早地很哪[00:27.18]现在上来干什么[00:29.42]阿黄阿黄鹂儿不要笑[00:31.60]等我爬上它就成熟了[00:36.93]阿门阿前一棵葡萄树[00:39.17]阿嫩阿嫩绿地刚发芽[00:41.71]蜗牛背著那重重的壳[00:44.21]一步一步地往上爬[00:46.65]阿树阿上两只黄鹂鸟[00:49.09]阿嘻阿嘻哈哈在笑它[00:51.53]葡萄成熟还早地很哪[00:53.96]现在上来干什么[00:56.62]阿黄阿黄鹂儿不要笑[00:59.21]等我爬上它就成熟了[01:23.75]阿门阿前一棵葡萄树[01:25.93]阿嫩阿嫩绿地刚发芽[01:27.71]蜗牛背著那重重的壳呀[01:31.11]一步一步地往上爬[01:33.45]阿树阿上两只黄鹂鸟[01:35.33]阿嘻阿嘻哈哈在笑它[01:37.46]葡萄成熟还早地很哪[01:39.75]现在上来干什么[01:42.95]阿黄阿黄鹂儿不要笑[01:45.13]等我爬上它就成熟了"
 	 },
 	 {
 	 	name:"白天不懂夜的黑",
