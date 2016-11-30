@@ -148,7 +148,7 @@ function render(obj,obj2){
 			if(lyrict1==p1.eq(i).attr("id")){
 				p1.css("color","#888")
 				p1.eq(i).css("color","#ee99b7");
-				$(".geci").animate({"top":-i*0.68+"rem"},1000);
+				$(".geci").animate({"top":-i*0.68+0.68+"rem"},1000);
 			}
 		}
 	}
@@ -159,7 +159,7 @@ function render(obj,obj2){
 			if(lyrict1==p1.eq(i).attr("id")){
 				p1.css("color","#888")
 				p1.eq(i).css("color","#ee99b7");
-				$(".geci").css({"top":-i*0.68+"rem"});
+				$(".geci").css({"top":-i*0.68+0.68+"rem"});
 				
 			}
 		}
