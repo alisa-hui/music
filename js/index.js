@@ -93,7 +93,7 @@ function render(obj,obj2){
 	progress.on("touchend",function(e){
 		left=e.originalEvent.changedTouches[0].clientX-progress.offset().left;
 		audio.currentTime=left/progress.width()*audio.duration;
-		console.log(audio.currentTime,left/progress.width()*audio.duration)
+		$('#done').width(left);
 		return false;
 	})
 	//进度条拖拽
@@ -102,10 +102,11 @@ function render(obj,obj2){
 		var start=procir.width()/2-ox;
 		gct=true;
 		$(document).on("touchmove",function(e){
-			var left1=e.originalEvent.changedTouches[0].clientX-progress.offset().left+start;
+			var left1=e.originalEvent.changedTouches[0].clientX-progress.offset().left+start; 
 				if(left1>=progress.width()||left1<=0){
 					return;	
 				}
+			$('#done').width(left1)
 			audio.currentTime=left1/progress.width()*audio.duration;			
 		})
 		return false;
@@ -188,6 +189,7 @@ function render(obj,obj2){
 		var width=progress.width();
 		left=audio.currentTime/ audio.duration * width-r;
 		procir.css("left",left);
+		$('#done').width(left)
 		if(gct){
 			play2()
 		}
@@ -210,9 +212,9 @@ function render(obj,obj2){
     })
     //列表显示
     $(".plist").on("touchend",function(){
-    	if($(".glist").css("display")=="none"){   		$(".glist").css("display","block").animate({"bottom":"-13.4rem"},500)
+    	if($(".glists").css("display")=="none"){   		$(".glists").css("display","block").animate({"bottom":"-10rem"},500)
     	}
-    	else{   		$(".glist").animate({"bottom":"-16rem"},500).css("display","none")
+    	else{   		$(".glists").animate({"bottom":"-16rem"},500).css("display","none")
     	}
     	return false;
     })
