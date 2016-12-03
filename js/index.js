@@ -93,7 +93,7 @@ function render(obj,obj2){
 	progress.on("touchend",function(e){
 		left=e.originalEvent.changedTouches[0].clientX-progress.offset().left;
 		audio.currentTime=left/progress.width()*audio.duration;
-		$('#done').width(left);
+		$('#done').width(left+2);
 		return false;
 	})
 	//进度条拖拽
@@ -106,7 +106,7 @@ function render(obj,obj2){
 				if(left1>=progress.width()||left1<=0){
 					return;	
 				}
-			$('#done').width(left1)
+			$('#done').width(left1+2)
 			audio.currentTime=left1/progress.width()*audio.duration;			
 		})
 		return false;
@@ -189,7 +189,7 @@ function render(obj,obj2){
 		var width=progress.width();
 		left=audio.currentTime/ audio.duration * width-r;
 		procir.css("left",left);
-		$('#done').width(left)
+		$('#done').width(left+2)
 		if(gct){
 			play2()
 		}
